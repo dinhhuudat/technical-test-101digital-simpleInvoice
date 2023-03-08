@@ -1,6 +1,48 @@
-# Getting Started with Create React App
+## Project details
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Techical implementation
+
+    - Main: Reactjs + Typescript
+    - Components structure: Automic design
+    - UI library : MUI
+    - Css : styled-component
+    - Data fetching: axios
+    - State management: contextAPI
+    - Form validation: Zod
+    - Addition: jest , storybook
+
+### Requirement
+
+#### Login:
+
+    - Create login form with user and password
+    - Validation input
+
+#### Create invoice:
+
+    - Create form for create invoice: Invoice Reference , Date ,Description and amount
+    - Each time you create a new invoice, it should be shown in this list
+    - form input validation
+
+#### List/ Search / view invoices:
+
+    - Table display a list of invoices s that have been created
+    - Set the list screen as the home screen
+    - add: search, sort, filter, pagination
+
+#### Reponsive::
+
+    - Make mobile reponsive
+
+#### API::
+
+    - setup api
+    - integrate api with component
+
+## System Requirements
+
+- Node.js 14.6.0 or newer
+- MacOS, Windows (including WSL), and Linux are supported
 
 ## Available Scripts
 
