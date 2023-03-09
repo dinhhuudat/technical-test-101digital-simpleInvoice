@@ -3,9 +3,9 @@
 ### Techical implementation
 
     - Main: Reactjs + Typescript
-    - Components structure: Create
-    - UI library : ANTD
-    - Css : styled-component
+    - Components structure: Automic design
+    - UI library : MUI
+    - Css : styled of MUI
     - Data fetching: useSwr
     - State management: contextAPI
     - Form validation: Zod
