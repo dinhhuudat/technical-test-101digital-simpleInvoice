@@ -1,7 +1,7 @@
 import { TextFieldProps } from "@mui/material";
 import React from "react";
 import { Controller, useFormContext } from "react-hook-form";
-import CustomTextField from "../../Atoms/CustomTextField";
+import CustomTextField from "../CustomTextField";
 
 type TRHFTextField = {
   name: string;

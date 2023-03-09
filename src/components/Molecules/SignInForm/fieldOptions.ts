@@ -14,6 +14,6 @@ export  const schemaForm = z.object({
  });
 
 export const fieldOptions: TFieldOptions = {
-   email: { type: 'textfield', label: 'email' },
-   password: { type: 'textfield', label: 'password' },
+   email: { type: 'textfield', label: 'Email Address *' },
+   password: { type: 'textfield', label: 'Password *' },
 }

@@ -2,19 +2,16 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Stack } from "@mui/material";
 import React from "react";
 import { FormProvider, useForm } from "react-hook-form";
-
+import CustomModal from "../../Atoms/CustomModal";
 import RHFTextField from "../../Atoms/RHFTextField";
 import { fieldOptions, schemaForm } from "./fieldOptions";
 
-type TCustomModalProps = {
+type TSignInFormProps = {
   isOpen: boolean;
-  handleClose: () => void;
+  onClose: () => void;
 };
 
-export const LoginForm: React.FC<TCustomModalProps> = ({
-  isOpen,
-  handleClose,
-}) => {
+export const SignInForm: React.FC<TSignInFormProps> = ({ isOpen, onClose }) => {
   const defaultValues = {
     email: "",
     password: "",
@@ -25,13 +22,23 @@ export const LoginForm: React.FC<TCustomModalProps> = ({
     resolver: zodResolver(schemaForm),
   });
 
+  const {
+    reset,
+    formState: { isSubmitting },
+  } = methods;
+
   const onSubmit = (formValues: { email: string; password: string }) => {
     const value = JSON.stringify(formValues);
     window.alert(value);
   };
 
+  const handleClose = () => {
+    reset();
+    onClose();
+  };
+
   return (
-    <div>
+    <CustomModal handleClose={handleClose} title="Sign In" isOpen={isOpen}>
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)}>
           <Stack>
@@ -48,12 +55,26 @@ export const LoginForm: React.FC<TCustomModalProps> = ({
                 />
               );
             })}
-            <Button variant="outlined" type="submit">
-              Login
-            </Button>
+            <Stack direction="row" spacing={2} justifyContent="flex-end">
+              <Button
+                variant="outlined"
+                type="submit"
+                disabled={isSubmitting}
+                color="primary"
+              >
+                Sign In
+              </Button>
+              <Button
+                variant="outlined"
+                onClick={handleClose}
+                color="secondary"
+              >
+                Cancel
+              </Button>
+            </Stack>
           </Stack>
         </form>
       </FormProvider>
-    </div>
+    </CustomModal>
   );
 };

@@ -10,26 +10,27 @@ const defaultStyle = {
   transform: "translate(-50%, -50%)",
   width: 400,
   bgcolor: "background.paper",
-  border: "2px solid #000",
   boxShadow: 24,
   p: 4,
+  borderRadius: "8px",
 };
 
 type TCustomModalProps = {
-  isOpen: boolean;
+  isOpen?: boolean;
   handleClose: () => void;
   style?: React.CSSProperties;
-  title: string;
-  children: React.ReactNode;
+  title?: string;
+  children?: React.ReactNode;
 };
 
 export const CustomModal: React.FC<TCustomModalProps> = ({
-  isOpen,
+  isOpen = false,
   handleClose,
   title,
   style,
   children,
 }) => {
+  const dataTestId = "CustomModal";
   return (
     <div>
       <Modal
@@ -37,9 +38,16 @@ export const CustomModal: React.FC<TCustomModalProps> = ({
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+        data-testid={dataTestId}
       >
         <Box sx={defaultStyle} style={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
+          <Typography
+            id="modal-modal-title"
+            variant="h6"
+            component="h2"
+            data-testid={`${dataTestId}-title`}
+            sx={{ mb: 2 }}
+          >
             {title}
           </Typography>
           {children}
