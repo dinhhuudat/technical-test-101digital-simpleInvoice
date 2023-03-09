@@ -44,11 +44,11 @@
 - Node.js 14.6.0 or newer
 - MacOS, Windows (including WSL), and Linux are supported
 
-## Available Scripts
+## Start project
 
-In the project directory, you can run:
+### B1 `npm install`
 
-### `npm run dev`
+### B2 `npm run dev`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
