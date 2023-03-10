@@ -5,7 +5,7 @@ import CustomTextField from "../CustomTextField";
 
 type TRHFTextField = {
   name: string;
-  options?: { value: string; label: string }[];
+  options?: { value: string | number; label: string }[];
 } & Partial<TextFieldProps>;
 
 export const RHFTextField: React.FC<TRHFTextField> = ({
@@ -21,12 +21,14 @@ export const RHFTextField: React.FC<TRHFTextField> = ({
       <Controller
         control={control}
         name={name}
-        render={({ field: { ref, ...restField } }) => {
+        render={({ field: { ref, value, ...restField } }) => {
+          console.log(123, value);
           return (
             <CustomTextField
               variant="outlined"
               sx={{ mb: "1.5rem" }}
               error={!!errors[name]}
+              value={value}
               helperText={
                 errors[name] ? (errors[name]?.message as unknown as string) : ""
               }

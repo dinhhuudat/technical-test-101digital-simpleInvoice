@@ -5,10 +5,10 @@ import { Controller, useFormContext } from "react-hook-form";
 
 type TRHFDateTime = {
   name: string;
-} & Partial<Omit<React.ComponentProps<typeof DatePicker>, "views">>;
+} & Partial<React.ComponentProps<typeof DatePicker>>;
 
 export const RHFDateTime: React.FC<TRHFDateTime> = ({ name, ...restProps }) => {
-  const { control } = useFormContext();
+  const { control, setValue } = useFormContext();
   return (
     <>
       <Controller
@@ -17,7 +17,14 @@ export const RHFDateTime: React.FC<TRHFDateTime> = ({ name, ...restProps }) => {
         render={({ field: { ref, ...restField } }) => {
           return (
             <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DatePicker inputRef={ref} {...restProps} {...restField} />
+              <DatePicker
+                inputRef={ref}
+                {...restProps}
+                {...restField}
+                onChange={(newValue) => {
+                  setValue(name, newValue);
+                }}
+              />
             </LocalizationProvider>
           );
         }}

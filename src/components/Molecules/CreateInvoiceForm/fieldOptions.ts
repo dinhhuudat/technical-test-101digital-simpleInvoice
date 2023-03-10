@@ -1,20 +1,31 @@
-import { TextFieldProps } from '@mui/material'
+import { DatePicker } from '@mui/x-date-pickers';
 import { z } from "zod";
-type TTextfields = 'email' | 'password'
+import { TRHFCustomTextFieldProps } from '../../Atoms/CustomTextField/CustomTextField';
+import { mockDataItems } from './mockData';
+type TTextfields = 'currency'  | 'description' | 'item'
+type TDateTime = 'invoiceDate'  | 'dueDate'
 
-type TSignUpTextfieldOptions = {
-   [key in TTextfields]: TextFieldProps & { type: 'textfield' }
+type TFieldOptions = {
+   [key in TTextfields]: TRHFCustomTextFieldProps & { type: 'textfield' }
+} & {
+   [key in TDateTime]:React.ComponentProps<typeof DatePicker> & {type:'datetime'}
 }
-
-type TFieldOptions = TSignUpTextfieldOptions
-
+  
 export  const schemaForm = z.object({
-   // email: z.string().min(1).email(),
-   // password: z.string().min(1),
-   // time:z.date()
+   currency:z.string() ,
+   description:z.string().min(1),
+   invoiceDate:z.coerce.date(),
+   dueDate: z.coerce.date(),
+   item: z.string(),
  });
 
+const currencyOptions =[{value:'GBP',label:'GBP'},{value:'VND',label:'VND'}]
+const itemOptions =[{value:'item1',label:mockDataItems[0].itemName},{value:'item2',label:mockDataItems[1].itemName} ]
+
 export const fieldOptions: TFieldOptions = {
-   email: { type: 'textfield', label: 'Email Address *' },
-   password: { type: 'textfield', label: 'Password *' },
+   currency: { type: 'textfield',label: 'Currency',options:currencyOptions,select:true }, 
+   invoiceDate:{type:'datetime',label:'Invoice date'},
+   dueDate:{type:'datetime',label:'Due date'},
+   description: { type: 'textfield',label: 'description',multiline:true,rows: 4 }, 
+   item: { type: 'textfield',label: 'item',options:itemOptions,select:true}, 
 }

@@ -6,8 +6,8 @@ import {
 } from "@mui/material";
 import React from "react";
 
-type TRHFCustomTextFieldProps = {
-  options?: { value: string; label: string }[];
+export type TRHFCustomTextFieldProps = {
+  options?: { value: string | number; label: string }[];
 } & TextFieldProps;
 
 export const CustomTextField: React.FC<TRHFCustomTextFieldProps> = ({

@@ -13,20 +13,12 @@ type TCreateInvoiceFormProps = {
   onClose: () => void;
 };
 
-type TInvoiceItem = {
-  itemReference: string;
-  description: string;
-  quantity: number;
-  rate: number;
-  itemName: string;
-  itemUOM: "KG";
-};
-
 type TCreateInvoiceField = {
   currency: "GBP" | "VND";
   invoiceDate: dayjs.Dayjs;
+  dueDate: dayjs.Dayjs;
   description: string;
-  items: TInvoiceItem[];
+  item: string;
 };
 
 export const CreateInvoiceForm: React.FC<TCreateInvoiceFormProps> = ({
@@ -37,16 +29,8 @@ export const CreateInvoiceForm: React.FC<TCreateInvoiceFormProps> = ({
     currency: "GBP",
     description: "",
     invoiceDate: dayjs(new Date().toLocaleDateString()),
-    items: [
-      {
-        itemReference: "itemRef",
-        description: "Honda RC150",
-        quantity: 1,
-        rate: 1000,
-        itemName: "Honda Motor",
-        itemUOM: "KG",
-      },
-    ],
+    dueDate: dayjs(new Date().toLocaleDateString()),
+    item: "item1",
   };
 
   const methods = useForm({
@@ -56,12 +40,10 @@ export const CreateInvoiceForm: React.FC<TCreateInvoiceFormProps> = ({
 
   const {
     reset,
-    formState: { isSubmitting, errors },
-    getValues,
+    formState: { isSubmitting },
   } = methods;
-  console.log(1, errors);
   const onSubmit = (formValues: TCreateInvoiceField) => {
-    const value = JSON.stringify(getValues());
+    const value = JSON.stringify(formValues);
     window.alert(value);
   };
 
@@ -78,22 +60,40 @@ export const CreateInvoiceForm: React.FC<TCreateInvoiceFormProps> = ({
     >
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)}>
-          <Stack>
-            <RHFDateTime name="invoiceDate" />
-
-            {/* {(
+          <Stack gap={2}>
+            {(
               Object.keys(fieldOptions) as Array<keyof typeof fieldOptions>
             ).map((fieldName) => {
-              const { label, ...restOptions } = fieldOptions[fieldName];
-              return (
-                <RHFTextField
-                  key={fieldName}
-                  label={label}
-                  name={fieldName}
-                  {...restOptions}
-                />
-              );
-            })} */}
+              const { type, label, ...restOptions } = fieldOptions[fieldName];
+
+              switch (type) {
+                case "textfield": {
+                  return (
+                    //@ts-ignore
+                    <RHFTextField
+                      key={fieldName}
+                      label={label}
+                      name={fieldName}
+                      {...restOptions}
+                    />
+                  );
+                }
+                case "datetime": {
+                  return (
+                    //@ts-ignore
+                    <RHFDateTime
+                      key={fieldName}
+                      name={fieldName}
+                      label={label}
+                      {...restOptions}
+                    />
+                  );
+                }
+                default: {
+                  return <></>;
+                }
+              }
+            })}
 
             <Stack direction="row" spacing={2} justifyContent="flex-end">
               <Button
