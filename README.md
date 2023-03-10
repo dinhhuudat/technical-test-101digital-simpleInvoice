@@ -6,7 +6,7 @@
     - Components structure: Automic design
     - UI library : MUI
     - Css : styled of MUI
-    - Data fetching: useSwr
+    - Data fetching: useSwr , Axios
     - State management: contextAPI
     - Form validation: Zod
     - Addition: jest , storybook
