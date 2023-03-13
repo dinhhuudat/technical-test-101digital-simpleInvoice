@@ -8,6 +8,6 @@ enum Epath {
 
 export const useInvoices = (payload: TInvoicesReq) => {
   const apiVersion = '1.0.0';
-  const endpoint = `${process.env.HOST}${Epath.INVOICE}/${apiVersion}/invoices`;
+  const endpoint = `${process.env.REACT_APP_API_URL}${Epath.INVOICE}/${apiVersion}/invoices`;
   return useSWR(endpoint, url => request(url, { params: payload }));
 };

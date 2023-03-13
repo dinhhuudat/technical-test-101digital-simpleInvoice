@@ -11,6 +11,13 @@ type TCustomer = {
   addresses: string[];
 };
 
+type TMembership = {
+  membershipId: string;
+  organisationId: string;
+  roleName: string;
+  token: string;
+};
+
 export type TInvoicesRes = {
   invoiceId: string;
   invoiceNumber: string;
@@ -32,4 +39,17 @@ export type TInvoicesRes = {
   totalDiscount: number;
   customer: TCustomer;
   invoiceGrossTotal: number;
+};
+
+export type TProfileRes = {
+  email: string;
+  firstName: string;
+  lastName: string;
+  memberships: TMembership[];
+  userId: string;
+  userName: string;
+};
+
+export type TTransfomData<T> = {
+  data: T;
 };
