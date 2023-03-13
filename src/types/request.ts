@@ -7,6 +7,7 @@ export type TInvoicesReq = {
 };
 
 export type TInvoiceItem = {
+  id: string;
   itemReference: string;
   description: string;
   quantity: number;

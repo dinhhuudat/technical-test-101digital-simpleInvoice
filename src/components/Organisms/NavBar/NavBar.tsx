@@ -1,4 +1,4 @@
-import { Box, Button } from '@mui/material';
+import { Avatar, Box, Button, Stack } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -37,9 +37,10 @@ export default function NavBar() {
                 Login
               </Button>
             ) : (
-              <Box>
+              <Stack direction="row" gap={1} alignItems="center">
                 <Typography>{`${profile?.firstName} ${profile?.lastName}`}</Typography>
-              </Box>
+                <Avatar>D</Avatar>
+              </Stack>
             )}
           </Box>
         </Toolbar>

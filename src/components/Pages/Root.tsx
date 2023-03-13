@@ -26,7 +26,9 @@ function Root() {
         ) : (
           <>
             <Stack justifyItems={'flex-end'} alignItems="flex-end">
-              <Button onClick={onCreateInvoice}>Create Invoice</Button>
+              <Button onClick={onCreateInvoice} variant="contained">
+                + Create Invoice
+              </Button>
             </Stack>
             <InvoiceTable />
             <CreateInvoiceForm isOpen={openCreateModal} onClose={handleClose} />
