@@ -4,6 +4,7 @@ import { mockData } from '../../../mockData';
 import { TInvoicesRes } from '../../../types/response';
 import CustomTable from '../../Molecules/CustomTable';
 import { TColumnTable } from '../../Molecules/CustomTable/CustomTable';
+import SearchInvoice from '../../Molecules/SearchInvoice';
 
 export const InvoiceTable: React.FC = () => {
   const [page, setPage] = useState(0);
@@ -22,8 +23,19 @@ export const InvoiceTable: React.FC = () => {
     { name: 'invoiceDate', label: 'Date' },
   ];
 
+  const onSearch = ({
+    searchType,
+    keyword,
+  }: {
+    searchType: string;
+    keyword: string;
+  }) => {
+    console.log('onSearch', searchType, keyword);
+  };
+
   return (
     <>
+      <SearchInvoice onSearch={onSearch} />
       <CustomTable
         columns={columns}
         rows={mockData.data}

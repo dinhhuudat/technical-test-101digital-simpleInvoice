@@ -49,7 +49,7 @@ export const CustomTable: React.FC<TCustomTableProps> = ({
   };
   return (
     <>
-      <TableContainer component={Paper}>
+      <TableContainer component={Paper} sx={{ width: '100%' }}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>

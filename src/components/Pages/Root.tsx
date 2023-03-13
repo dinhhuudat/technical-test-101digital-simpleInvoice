@@ -1,6 +1,8 @@
-import { Button } from '@mui/material';
+import { Button, Stack } from '@mui/material';
 import { useState } from 'react';
+import CreateInvoiceForm from '../Molecules/CreateInvoiceForm';
 import InvoiceTable from '../Organisms/invoiceTable';
+import NavBar from '../Organisms/NavBar';
 
 function Root() {
   const [openCreateModal, setOpenCreateModal] = useState(false);
@@ -9,16 +11,21 @@ function Root() {
     setOpenCreateModal(false);
   };
 
-  const handleOpenCreateModal = () => {
+  const onCreateInvoice = () => {
     setOpenCreateModal(true);
   };
 
   return (
-    <div className="Root">
-      <Button onClick={handleOpenCreateModal}>Open Modal</Button>
-      {/* add create invoice form table */}
-      <InvoiceTable />
-    </div>
+    <>
+      <NavBar />
+      <Stack sx={{ margin: '100px' }}>
+        <Stack justifyItems={'flex-end'} alignItems="flex-end">
+          <Button onClick={onCreateInvoice}>Create Invoice</Button>
+        </Stack>
+        <InvoiceTable />
+        <CreateInvoiceForm isOpen={openCreateModal} onClose={handleClose} />
+      </Stack>
+    </>
   );
 }
 
