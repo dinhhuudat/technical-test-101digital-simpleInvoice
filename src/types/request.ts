@@ -1,9 +1,17 @@
+export type TInvoiceSort =
+  | 'CURRENTCY'
+  | 'INVOICE_NUMBER'
+  | 'CREATED_DATE'
+  | 'DESCRIPTION'
+  | 'INVOICE_DATE';
+
 export type TInvoicesReq = {
   pageNum: number;
   pageSize: number;
   dataType: 'INVOICE_DATE';
-  sortBy: 'CREATED_DATE';
-  ordering: 'ASCENDING';
+  sortBy: TInvoiceSort;
+  ordering: 'ASCENDING' | 'DESCENDING';
+  keyword: string;
 };
 
 export type TInvoiceItem = {

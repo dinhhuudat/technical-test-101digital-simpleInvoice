@@ -7,7 +7,7 @@ import { useProfile } from '../../../services/users/hook';
 import SignInForm from '../../Molecules/SignInForm';
 
 export default function NavBar() {
-  const { data: profile, isError } = useProfile();
+  const { data: profile, isError, mutate } = useProfile();
 
   const [openModalLogin, setOpenModalLogin] = useState(false);
 
@@ -17,6 +17,7 @@ export default function NavBar() {
 
   const onClose = async () => {
     setOpenModalLogin(false);
+    mutate();
   };
 
   return (

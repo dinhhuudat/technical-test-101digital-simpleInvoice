@@ -5,18 +5,11 @@ import RHFTextField from '../../Atoms/RHFTextField';
 import { fieldOptions } from './fieldOptions';
 
 type TSearchInvoiceProps = {
-  onSearch: ({
-    searchType,
-    keyword,
-  }: {
-    searchType: string;
-    keyword: string;
-  }) => void;
+  onSearch: ({ keyword }: { keyword: string }) => void;
 };
 
 export const SearchInvoice: React.FC<TSearchInvoiceProps> = ({ onSearch }) => {
   const defaultValues = {
-    searchType: 'invoiceId',
     keyword: '',
   };
 
@@ -29,11 +22,12 @@ export const SearchInvoice: React.FC<TSearchInvoiceProps> = ({ onSearch }) => {
     formState: { isSubmitting },
   } = methods;
 
-  const onSubmit = (formValues: { searchType: string; keyword: string }) => {
+  const onSubmit = (formValues: { keyword: string }) => {
     onSearch(formValues);
   };
 
   const handleClose = () => {
+    onSearch({ keyword: '' });
     reset();
   };
 

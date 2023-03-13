@@ -18,7 +18,7 @@ type TMembership = {
   token: string;
 };
 
-export type TInvoicesRes = {
+export type TInvoiceRes = {
   invoiceId: string;
   invoiceNumber: string;
   referenceNo: string;

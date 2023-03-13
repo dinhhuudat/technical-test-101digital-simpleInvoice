@@ -4,7 +4,6 @@ import { useProfile } from '../../services/users/hook';
 import CreateInvoiceForm from '../Molecules/CreateInvoiceForm';
 import InvoiceTable from '../Organisms/invoiceTable';
 import NavBar from '../Organisms/NavBar';
-
 function Root() {
   const [openCreateModal, setOpenCreateModal] = useState(false);
   const { isError } = useProfile();
