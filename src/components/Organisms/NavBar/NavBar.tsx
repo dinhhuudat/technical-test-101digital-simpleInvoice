@@ -24,11 +24,7 @@ export default function NavBar() {
     <>
       <AppBar component="nav">
         <Toolbar>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-          >
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Simple Invoice
           </Typography>
 

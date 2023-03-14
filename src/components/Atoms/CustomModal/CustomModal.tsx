@@ -1,24 +1,10 @@
-import Box from "@mui/material/Box";
-import Modal from "@mui/material/Modal";
-import Typography from "@mui/material/Typography";
-import React from "react";
-
-const defaultStyle = {
-  position: "absolute" as "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  boxShadow: 24,
-  p: 4,
-  borderRadius: "8px",
-};
+import { Dialog, DialogContent, DialogTitle, useTheme } from '@mui/material';
+import React from 'react';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 type TCustomModalProps = {
   isOpen?: boolean;
   handleClose: () => void;
-  style?: React.CSSProperties;
   title?: string;
   children?: React.ReactNode;
 };
@@ -27,32 +13,23 @@ export const CustomModal: React.FC<TCustomModalProps> = ({
   isOpen = false,
   handleClose,
   title,
-  style,
   children,
 }) => {
-  const dataTestId = "CustomModal";
+  const theme = useTheme();
+  const dataTestId = 'CustomModal';
+  const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
   return (
     <div>
-      <Modal
+      <Dialog
         open={isOpen}
         onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+        aria-labelledby="responsive-dialog-title"
         data-testid={dataTestId}
+        fullScreen={fullScreen}
       >
-        <Box sx={defaultStyle} style={style}>
-          <Typography
-            id="modal-modal-title"
-            variant="h6"
-            component="h2"
-            data-testid={`${dataTestId}-title`}
-            sx={{ mb: 2 }}
-          >
-            {title}
-          </Typography>
-          {children}
-        </Box>
-      </Modal>
+        <DialogTitle id="responsive-dialog-title">{title}</DialogTitle>
+        <DialogContent>{children}</DialogContent>
+      </Dialog>
     </div>
   );
 };

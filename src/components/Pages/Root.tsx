@@ -19,7 +19,12 @@ function Root() {
   return (
     <>
       <NavBar />
-      <Stack sx={{ margin: '100px' }}>
+      <Stack
+        sx={{
+          margin: { xs: '0px', sm: '100px' },
+          mt: { xs: '90px', sm: '100px' },
+        }}
+      >
         {isError ? (
           <div>You have to login first!</div>
         ) : (
