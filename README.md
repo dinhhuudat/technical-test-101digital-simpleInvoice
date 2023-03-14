@@ -47,6 +47,7 @@
     -Get invoice details
     -Create profile page
     -Search api
+    -Api get items
 
 ## System Requirements
 

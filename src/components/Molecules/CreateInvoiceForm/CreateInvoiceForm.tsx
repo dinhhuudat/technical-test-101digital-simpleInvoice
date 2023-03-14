@@ -35,6 +35,7 @@ export const CreateInvoiceForm: React.FC<TCreateInvoiceFormProps> = ({
     dueDate: dayjs(),
     item: 'item1',
   };
+  const dataTestId = 'CreateInvoiceForm';
 
   const [errors, setErrors] = useState<string[]>([]);
 
@@ -78,6 +79,7 @@ export const CreateInvoiceForm: React.FC<TCreateInvoiceFormProps> = ({
       handleClose={handleClose}
       title="Create Invoice"
       isOpen={isOpen}
+      data-testid={`${dataTestId}`}
     >
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)}>

@@ -27,7 +27,12 @@ export const CustomModal: React.FC<TCustomModalProps> = ({
         data-testid={dataTestId}
         fullScreen={fullScreen}
       >
-        <DialogTitle id="responsive-dialog-title">{title}</DialogTitle>
+        <DialogTitle
+          data-testid={`${dataTestId}-title`}
+          id="responsive-dialog-title"
+        >
+          {title}
+        </DialogTitle>
         <DialogContent>{children}</DialogContent>
       </Dialog>
     </div>

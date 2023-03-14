@@ -1,4 +1,5 @@
-import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
+import axios from 'axios';
+import { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 
 axios.interceptors.request.use(
   (config: any) => {
